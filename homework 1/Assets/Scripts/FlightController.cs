@@ -32,10 +32,6 @@ public class FlightController : MonoBehaviour
         HandleThrust();
         ToggleThrust();
     }
-    private void FixedUpdate()
-    {
-        //DynamicGravitationalAccel();
-    }
 
     private void HandleRotation()
     {
@@ -55,13 +51,6 @@ public class FlightController : MonoBehaviour
         Vector3 thrustVector = thrustSpeed * Time.deltaTime * toggleAccel * transform.forward;
         rb.MovePosition(rb.position + thrustVector + counterGrav);
         Debug.Log("Thrust: " + (toggleAccel * thrustSpeed));
-    }
-
-    private void DynamicGravitationalAccel()
-    {
-        //gravity = gravity(9,81) * (transform.Rotation.x/36)
-
-        rb.AddForce(0, (-transform.rotation.x*-gravity), 0);
     }
 
     private void ToggleThrust() 
