@@ -11,6 +11,7 @@ public class FlightController : MonoBehaviour
     [SerializeField] private float rollSpeed = 45f;  // degrees/second roll: tilt left/right
     [SerializeField] private float thrustSpeed = 5f;   // units/second 
     private int toggleAccel;
+    private float gravity = -9.81f;
     // TODO (Task 3-A): Declare a private Rigidbody field named 'rb'
     [SerializeField] private Rigidbody rb;
 
@@ -31,6 +32,10 @@ public class FlightController : MonoBehaviour
         HandleThrust();
         ToggleThrust();
     }
+    private void FixedUpdate()
+    {
+        //DynamicGravitationalAccel();
+    }
 
     private void HandleRotation()
     {
@@ -46,11 +51,19 @@ public class FlightController : MonoBehaviour
 
     private void HandleThrust()
     {
-
+        Vector3 counterGrav = transform.rotation.x*gravity*Time.deltaTime*transform.up*toggleAccel;
         Vector3 thrustVector = thrustSpeed * Time.deltaTime * toggleAccel * transform.forward;
-        rb.MovePosition(rb.position + thrustVector);
+        rb.MovePosition(rb.position + thrustVector + counterGrav);
         Debug.Log("Thrust: " + (toggleAccel * thrustSpeed));
     }
+
+    private void DynamicGravitationalAccel()
+    {
+        //gravity = gravity(9,81) * (transform.Rotation.x/36)
+
+        rb.AddForce(0, (-transform.rotation.x*-gravity), 0);
+    }
+
     private void ToggleThrust() 
     {
         if (Input.GetKeyDown(KeyCode.Space))
