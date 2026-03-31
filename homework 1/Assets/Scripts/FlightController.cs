@@ -47,11 +47,10 @@ public class FlightController : MonoBehaviour
     private void HandleThrust()
     {
 
-        Vector3 thrustVector = transform.forward * toggleAccel * thrustSpeed * Time.deltaTime;
+        Vector3 thrustVector = thrustSpeed * Time.deltaTime * toggleAccel * transform.forward;
         rb.MovePosition(rb.position + thrustVector);
         Debug.Log("Thrust: " + (toggleAccel * thrustSpeed));
     }
-
     private void ToggleThrust() 
     {
         if (Input.GetKeyDown(KeyCode.Space))
