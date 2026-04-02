@@ -522,7 +522,7 @@ GameObject:
   - component: {fileID: 745525178}
   m_Layer: 0
   m_Name: Quad
-  m_TagString: Untagged
+  m_TagString: Unsafe Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -811,7 +811,7 @@ GameObject:
   - component: {fileID: 878680071}
   m_Layer: 0
   m_Name: Quad (1)
-  m_TagString: Untagged
+  m_TagString: Unsafe Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
