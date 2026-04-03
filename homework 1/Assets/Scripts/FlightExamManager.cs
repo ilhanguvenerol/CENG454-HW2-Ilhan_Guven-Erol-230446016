@@ -9,7 +9,7 @@ public class FlightExamManager : MonoBehaviour
     private bool inDangerZone = false;
     private bool missileCountdown = false;
     private bool missileActive = false;
-    private bool threatCleared = false;
+    private bool threatCleared = false; //TECHNICALLY it is impossible for the player to reach a landing zone while still in danger so a check using this variable is basically useless
     private bool missionComplete = false;
 
 
@@ -20,8 +20,8 @@ public class FlightExamManager : MonoBehaviour
 
         inDangerZone = true;
         missileCountdown = true;
-        hud.ShowWarning("Entered a Dangerous Zone!");
-        hud.SetStatus("Escape the zone before the missile locks on!");
+        hud.ShowWarning("You are flying over enemy territory");
+        hud.SetStatus("Fly through the region before they shot you down");
         Debug.Log("[FlightExamManager] Danger zone entered.");
     }
 
@@ -36,5 +36,49 @@ public class FlightExamManager : MonoBehaviour
         hud.ClearWarning();
         hud.SetStatus("Threat cleared! Find the landing strip.");
         Debug.Log("[FlightExamManager] Danger zone exited – threat cleared.");
+    }
+
+    public void NotifyTakeoff()
+    {
+        if (hasTakenOff) return;
+        hasTakenOff = true;
+        hud.SetStatus("Reach the next landing zone. Make sure the plane stays in one piece");
+        Debug.Log("[FlightExamManager] Takeoff confirmed.");
+    }
+
+    public void NotifyMissileActive()
+    {
+        missileActive = true;
+        missileCountdown = false;
+        hud.SetStatus("Anti-Aircraft missiles locked and approaching. Take evasive action");
+        Debug.Log("[FlightExamManager] Missile is active.");
+    }
+
+    public void NotifyMissileHit()
+    {
+        hud.ShowWarning("MISSILE HIT! Mission failed.");
+        hud.SetStatus("Respawning...");
+        // Extend later: trigger respawn, reduce health, etc.
+        Debug.Log("[FlightExamManager] Missile hit the aircraft.");
+    }
+
+    public void TryCompleteMission()
+    {
+        if (!hasTakenOff)
+        {
+            hud.SetStatus("You must take off first!");
+            return;
+        }
+        if (!threatCleared)
+        {
+            hud.SetStatus("You cannot land while being targeted");
+            return;
+        }
+        if (missionComplete) return;
+
+        missionComplete = true;
+        hud.ClearWarning();
+        hud.SetStatus("Congratulations, Pilot. You live to fly another day");
+        Debug.Log("[FlightExamManager] Mission complete.");
     }
 }
