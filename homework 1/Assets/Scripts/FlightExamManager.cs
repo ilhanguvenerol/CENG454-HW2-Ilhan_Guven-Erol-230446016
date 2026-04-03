@@ -3,8 +3,7 @@ using TMPro;
 
 public class FlightExamManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text statusText;
-    [SerializeField] private TMP_Text missionText;
+    [SerializeField] private HUDController hud;
 
     private bool hasTakenOff = false;
     private bool threatCleared = false;
