@@ -19,7 +19,7 @@ public class DangerZoneController : MonoBehaviour
         if (activeCountdown != null)
             StopCoroutine(activeCountdown);//prevent duplicate countdowns
 
-        activeCountdown = StartCoroutine(MissileCountdown(other.transform));//MissileCountdown will be referenced from examManager, yet to be implemented
+        activeCountdown = StartCoroutine(MissileCountdown(other.transform));
     }
 
     private void OnTriggerExit(Collider other)
@@ -35,5 +35,18 @@ public class DangerZoneController : MonoBehaviour
         // TODO: destroy the active missile and clear the HUD warning 
         missileLauncher.DestroyActiveMissile();
         examManager.ExitDangerZone();
+    }
+
+    private IEnumerator MissileCountdown(Transform playerTransform)
+    {
+        yield return new WaitForSeconds(missileDelay);
+
+        
+        GameObject missile = missileLauncher.Launch(playerTransform);
+
+        if (missile != null)
+            examManager.NotifyMissileActive();
+
+        activeCountdown = null;
     }
 }
