@@ -16,7 +16,7 @@ public class FlightExamManager : MonoBehaviour
     public void EnterDangerZone()
     {
         // TODO: update the mission state and HUD 
-        if (!hasTakenOff || missionComplete) return;
+        //if (!hasTakenOff || missionComplete) return;
 
         inDangerZone = true;
         missileCountdown = true;
