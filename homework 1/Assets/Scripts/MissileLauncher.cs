@@ -9,7 +9,8 @@ public class MissileLauncher : MonoBehaviour
 
     public GameObject Launch(Transform target)
     {
-        // TODO (Task 3-A): instantiate the missile at launchPoint 
+        // TODO (Task 3-A): instantiate the missile at launchPoint
+        activeMissile = Instantiate(missilePrefab, launchPoint.position, launchPoint.rotation);
         // TODO (Task 3-B): give the missile its target 
         // TODO (Task 3-C): play launch audio and return the spawned missile 
         return null;
