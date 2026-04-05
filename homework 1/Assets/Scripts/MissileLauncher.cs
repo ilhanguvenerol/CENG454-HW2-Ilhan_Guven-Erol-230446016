@@ -9,6 +9,11 @@ public class MissileLauncher : MonoBehaviour
 
     public GameObject Launch(Transform target)
     {
+        if (missilePrefab == null || launchPoint == null)
+        {
+            Debug.LogWarning("[MissileLauncher] missilePrefab or launchPoint not assigned.");
+            return null;
+        }
         // TODO (Task 3-A): instantiate the missile at launchPoint
         activeMissile = Instantiate(missilePrefab, launchPoint.position, launchPoint.rotation);
         // TODO (Task 3-B): give the missile its target 
