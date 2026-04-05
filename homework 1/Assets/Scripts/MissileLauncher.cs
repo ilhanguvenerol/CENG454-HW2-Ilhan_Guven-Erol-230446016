@@ -4,6 +4,7 @@ public class MissileLauncher : MonoBehaviour
     [SerializeField] private GameObject missilePrefab;
     [SerializeField] private Transform launchPoint;
     [SerializeField] private AudioSource launchAudioSource;
+    [SerializeField] private AudioClip launchClip;
 
     private GameObject activeMissile;
 
@@ -24,7 +25,11 @@ public class MissileLauncher : MonoBehaviour
             Debug.LogWarning("[MissileLauncher] Missile prefab is missing MissileHoming component.");
 
         // TODO (Task 3-C): play launch audio and return the spawned missile 
-        return null;
+        if (launchAudioSource != null && launchClip != null)
+            launchAudioSource.PlayOneShot(launchClip);
+
+        Debug.Log("[MissileLauncher] Missile launched.");
+        return activeMissile;
     }
 
     public void DestroyActiveMissile()
