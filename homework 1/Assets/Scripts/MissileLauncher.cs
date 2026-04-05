@@ -34,6 +34,12 @@ public class MissileLauncher : MonoBehaviour
 
     public void DestroyActiveMissile()
     {
-        // TODO (Task 3-D): destroy the current missile safely if one exists 
+        // TODO (Task 3-D): destroy the current missile safely if one exists
+        if (activeMissile != null)
+        {
+            Destroy(activeMissile);
+            activeMissile = null;
+            Debug.Log("[MissileLauncher] Active missile destroyed.");
+        }
     }
 }
