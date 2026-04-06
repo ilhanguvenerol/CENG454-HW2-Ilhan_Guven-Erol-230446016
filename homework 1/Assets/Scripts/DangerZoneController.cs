@@ -6,6 +6,8 @@ public class DangerZoneController : MonoBehaviour
     [SerializeField] private FlightExamManager examManager;
     [SerializeField] private MissileLauncher missileLauncher;
     [SerializeField] private float missileDelay = 5f;
+    [SerializeField] private float missileLifetime = 5f;
+    [SerializeField] private float respawnDelay = 0.5f;
 
     private Coroutine activeCountdown;
 
@@ -41,12 +43,18 @@ public class DangerZoneController : MonoBehaviour
     {
         yield return new WaitForSeconds(missileDelay);
 
-        
-        GameObject missile = missileLauncher.Launch(playerTransform);
+        while (true)
+        {
+            GameObject missile = missileLauncher.Launch(playerTransform);
+            if (missile != null)
+                examManager.NotifyMissileActive();
 
-        if (missile != null)
-            examManager.NotifyMissileActive();
+            yield return new WaitForSeconds(missileLifetime);
 
-        activeCountdown = null;
+            if (missile != null)
+                missileLauncher.DestroyActiveMissile();
+
+            yield return new WaitForSeconds(respawnDelay);
+        }
     }
 }
