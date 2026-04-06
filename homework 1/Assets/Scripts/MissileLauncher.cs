@@ -4,19 +4,42 @@ public class MissileLauncher : MonoBehaviour
     [SerializeField] private GameObject missilePrefab;
     [SerializeField] private Transform launchPoint;
     [SerializeField] private AudioSource launchAudioSource;
+    [SerializeField] private AudioClip launchClip;
 
     private GameObject activeMissile;
 
     public GameObject Launch(Transform target)
     {
-        // TODO (Task 3-A): instantiate the missile at launchPoint 
+        if (missilePrefab == null || launchPoint == null)
+        {
+            Debug.LogWarning("[MissileLauncher] missilePrefab or launchPoint not assigned.");
+            return null;
+        }
+        // TODO (Task 3-A): instantiate the missile at launchPoint
+        activeMissile = Instantiate(missilePrefab, launchPoint.position, launchPoint.rotation);
         // TODO (Task 3-B): give the missile its target 
+        MissileHoming homing = activeMissile.GetComponent<MissileHoming>();
+        if (homing != null)
+            homing.SetTarget(target);
+        else
+            Debug.LogWarning("[MissileLauncher] Missile prefab is missing MissileHoming component.");
+
         // TODO (Task 3-C): play launch audio and return the spawned missile 
-        return null;
+        if (launchAudioSource != null && launchClip != null)
+            launchAudioSource.PlayOneShot(launchClip);
+
+        Debug.Log("[MissileLauncher] Missile launched.");
+        return activeMissile;
     }
 
     public void DestroyActiveMissile()
     {
-        // TODO (Task 3-D): destroy the current missile safely if one exists 
+        // TODO (Task 3-D): destroy the current missile safely if one exists
+        if (activeMissile != null)
+        {
+            Destroy(activeMissile);
+            activeMissile = null;
+            Debug.Log("[MissileLauncher] Active missile destroyed.");
+        }
     }
 }
