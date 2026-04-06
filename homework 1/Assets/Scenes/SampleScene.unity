@@ -688,6 +688,7 @@ GameObject:
   - component: {fileID: 724569080}
   - component: {fileID: 724569079}
   - component: {fileID: 724569078}
+  - component: {fileID: 724569083}
   m_Layer: 0
   m_Name: MissileLauncher
   m_TagString: Untagged
@@ -709,8 +710,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missilePrefab: {fileID: 8253423340140830220, guid: 24e260bf5e4545a4799e333dce5bcd88, type: 3}
   launchPoint: {fileID: 330427577}
-  launchAudioSource: {fileID: 0}
-  launchClip: {fileID: 0}
+  launchAudioSource: {fileID: 724569083}
+  launchClip: {fileID: 8300000, guid: 5875bdbaafb31ac49a4bf1456a1d85f2, type: 3}
 --- !u!65 &724569079
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -794,13 +795,110 @@ Transform:
   m_GameObject: {fileID: 724569077}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7, y: -1, z: 30.7}
+  m_LocalPosition: {x: 0.7, y: -1, z: 44.4}
   m_LocalScale: {x: 2.78, y: 2.78, z: 2.78}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 330427577}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &724569083
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724569077}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &745525176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,6 +1310,7 @@ GameObject:
   - component: {fileID: 1030391318}
   - component: {fileID: 1030391317}
   - component: {fileID: 1030391316}
+  - component: {fileID: 1030391321}
   m_Layer: 0
   m_Name: Plane (2)
   m_TagString: Landing Area
@@ -1330,6 +1429,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1602453171}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1030391321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030391315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 664839b50d2450f409c2acc8f2e344ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  examManager: {fileID: 2102818168}
+  messageDisplayTime: 3
 --- !u!1 &1224511162
 GameObject:
   m_ObjectHideFlags: 0
