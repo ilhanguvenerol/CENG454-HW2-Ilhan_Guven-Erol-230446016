@@ -32,7 +32,7 @@ public class FlightExamManager : MonoBehaviour
         missileCountdown = false;
         missileActive = false;
         threatCleared = true;
-
+        hud.SetStatus("Collide with landing zone to finish the level");
         hud.ClearWarning();
         //hud.SetStatus("Threat cleared! Find the landing strip.");//respawn action also triggers this method so it is removed to prevent confusion
         Debug.Log("[FlightExamManager] Danger zone exited – threat cleared.");
@@ -68,11 +68,14 @@ public class FlightExamManager : MonoBehaviour
 
     public void TryCompleteMission()
     {
+        /*      //I could also have a collision exit check to change the value of boolean variable but its really not that important
         if (!hasTakenOff)
         {
             hud.SetStatus("You must take off first!");
             return;
         }
+        */
+
         if (!threatCleared)
         {
             hud.SetStatus("You cannot land while being targeted");
