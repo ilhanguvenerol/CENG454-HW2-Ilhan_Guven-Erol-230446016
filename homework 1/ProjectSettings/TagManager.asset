@@ -8,6 +8,7 @@ TagManager:
   - Landing Area
   - Unsafe Terrain
   - Danger Zone
+  - Missile
   layers:
   - Default
   - TransparentFX
