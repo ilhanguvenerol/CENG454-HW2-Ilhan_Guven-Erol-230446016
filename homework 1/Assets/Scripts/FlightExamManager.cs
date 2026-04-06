@@ -68,11 +68,14 @@ public class FlightExamManager : MonoBehaviour
 
     public void TryCompleteMission()
     {
+        /*      //I could also have a collision exit check to change the value of boolean variable but its really not that important
         if (!hasTakenOff)
         {
             hud.SetStatus("You must take off first!");
             return;
         }
+        */
+
         if (!threatCleared)
         {
             hud.SetStatus("You cannot land while being targeted");
