@@ -34,7 +34,7 @@ public class FlightExamManager : MonoBehaviour
         threatCleared = true;
 
         hud.ClearWarning();
-        hud.SetStatus("Threat cleared! Find the landing strip.");
+        //hud.SetStatus("Threat cleared! Find the landing strip.");//respawn action also triggers this method so it is removed to prevent confusion
         Debug.Log("[FlightExamManager] Danger zone exited – threat cleared.");
     }
 
@@ -60,6 +60,10 @@ public class FlightExamManager : MonoBehaviour
         hud.SetStatus("Respawning...");
         // Extend later: trigger respawn, reduce health, etc.
         Debug.Log("[FlightExamManager] Missile hit the aircraft.");
+    }
+
+    public void NotifyRespawn() {
+        hud.SetStatus("Try Again");
     }
 
     public void TryCompleteMission()
