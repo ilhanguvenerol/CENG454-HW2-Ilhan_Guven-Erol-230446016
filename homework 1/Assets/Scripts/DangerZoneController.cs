@@ -36,7 +36,7 @@ public class DangerZoneController : MonoBehaviour
         }
         // TODO: destroy the active missile and clear the HUD warning 
         missileLauncher.DestroyActiveMissile();
-        examManager.ExitDangerZone();
+        //examManager.ExitDangerZone();
     }
 
     private IEnumerator MissileCountdown(Transform playerTransform)
